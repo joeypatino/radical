@@ -22,3 +22,6 @@ coverage.xml
 .vscode
 .sass-cache
 Gemfile.lock
+/.idea
+.DS_Store
+/venv

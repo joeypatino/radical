@@ -52,8 +52,9 @@
 [auth]
 
 # Authentication method
-# Value: none | htpasswd | remote_user | http_x_remote_user
-#type = none
+# Value: none | htpasswd | remote_user | http_x_remote_user | http_request_auth
+
+type = none
 
 # Htpasswd filename
 #htpasswd_filename = /etc/radicale/users
@@ -74,7 +75,7 @@
 
 # Rights backend
 # Value: none | authenticated | owner_only | owner_write | from_file
-#type = owner_only
+type = owner_only
 
 # File for rights management from_file
 #file = /etc/radicale/rights
@@ -94,7 +95,7 @@
 
 # Command that is run after changes to storage
 # Example: ([ -d .git ] || git init) && git add -A && (git diff --cached --quiet || git commit -m "Changes by "%(user)s)
-#hook =
+# hook =
 
 
 [web]
@@ -108,7 +109,7 @@
 
 # Threshold for the logger
 # Value: debug | info | warning | error | critical
-#level = warning
+level = debug
 
 # Don't include passwords in logs
 #mask_passwords = True

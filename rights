@@ -13,63 +13,63 @@
 # Example: owner_only plugin
 
 # Allow reading root collection for authenticated users
-#[root]
-#user: .+
-#collection:
-#permissions: R
+[root]
+user: .+
+collection:
+permissions: R
 
 # Allow reading and writing principal collection (same as user name)
-#[principal]
-#user: .+
-#collection: {user}
-#permissions: RW
+[principal]
+user: .+
+collection: {user}
+permissions: RW
 
 # Allow reading and writing calendars and address books that are direct
 # children of the principal collection
-#[calendars]
-#user: .+
-#collection: {user}/[^/]+
-#permissions: rw
+[calendars]
+user: .+
+collection: {user}/[^/]+
+permissions: rw
 
 
 # Example: owner_write plugin
 # Only listed additional rules for the owner_only plugin example.
 
 # Allow reading principal collections of all users
-#[read-all-principals]
-#user: .+
-#collection: [^/]+
-#permissions: R
+[read-all-principals]
+user: .+
+collection: [^/]+
+permissions: R
 
 # Allow reading all calendars and address books that are direct children of any
 # principal collection
-#[read-all-calendars]
-#user: .+
-#collection: [^/]+/[^/]+
-#permissions: r
+[read-all-calendars]
+user: .+
+collection: [^/]+/[^/]+
+permissions: r
 
 
 # Example: authenticated plugin
 
 # Allow reading and writing root and principal collections of all users
-#[root-and-principals]
-#user: .+
-#collection: [^/]*
-#permissions: RW
+[root-and-principals]
+user: .+
+collection: [^/]*
+permissions: RW
 
 # Allow reading and writing all calendars and address books that are direct
 # children of any principal collection
-#[calendars]
-#user: .+
-#collection: [^/]+/[^/]+
-#permissions: rw
+[calendars]
+user: .+
+collection: [^/]+/[^/]+
+permissions: rw
 
 
 # Example: Allow user "admin" to read everything
-#[admin-read-all]
-#user: admin
-#collection: .*
-#permissions: Rr
+[admin-read-all]
+user: admin
+collection: .*
+permissions: Rr
 
 
 # Example: Allow everybody (including unauthenticated users) to read
@@ -98,14 +98,14 @@
 # collection "domain.tld"
 
 # Allow reading the domain collection
-#[read-domain-principal]
-#user: .+@([^@]+)
-#collection: {0}
-#permissions: R
+[read-domain-principal]
+user: .+@([^@]+)
+collection: {0}
+permissions: R
 
 # Allow reading all calendars and address books that are direct children of
 # the domain collection
-#[read-domain-calendars]
-#user: .+@([^@]+)
-#collection: {0}/[^/]+
-#permissions: r
+[read-domain-calendars]
+user: .+@([^@]+)
+collection: {0}/[^/]+
+permissions: r
