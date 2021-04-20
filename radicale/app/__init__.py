@@ -246,12 +246,12 @@ class Application(
         # Create principal collection
         if user:
             principal_path = "/%s/" % user
-            with self._storage.acquire_lock("r", "PRINCIPAL", user, principal_path, context):
+            with self._storage.acquire_lock("r", user, principal_path, context):
                 principal = next(self._storage.discover(
                     principal_path, depth="1"), None)
             if not principal:
                 if "W" in self._rights.authorization(user, principal_path):
-                    with self._storage.acquire_lock("w", "PRINCIPAL", user, principal_path, context):
+                    with self._storage.acquire_lock("w", user, principal_path, context):
                         try:
                             self._storage.create_collection(principal_path)
                         except ValueError as e:

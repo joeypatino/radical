@@ -52,7 +52,7 @@
 [auth]
 
 # Authentication method
-# Value: none | htpasswd | remote_user | http_x_remote_user | http_request_auth
+# Value: none | htpasswd | remote_user | http_x_remote_user
 
 type = none
 
@@ -95,7 +95,7 @@ type = owner_only
 
 # Command that is run after changes to storage
 # Example: ([ -d .git ] || git init) && git add -A && (git diff --cached --quiet || git commit -m "Changes by "%(user)s)
-# hook =
+#hook =
 
 
 [web]

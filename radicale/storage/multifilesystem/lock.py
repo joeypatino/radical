@@ -48,7 +48,7 @@ class StorageLockMixin:
         self._lock = pathutils.RwLock(lock_path)
 
     @contextlib.contextmanager
-    def acquire_lock(self, mode, action=None, user=None, file=None, context=None):
+    def acquire_lock(self, mode, user=None, file=None, context=None):
         with self._lock.acquire(mode):
             yield
             # execute hook
@@ -70,7 +70,7 @@ class StorageLockMixin:
                     popen_kwargs["creationflags"] = (
                         subprocess.CREATE_NEW_PROCESS_GROUP)
                 absolute_file_path = self._get_collection_root_folder() + file
-                command = hook % {"user": shlex.quote(user or "Anonymous"), "action": action or "", "file": shlex.quote(absolute_file_path or ""), "context": str(context) or ""}
+                command = hook % {"user": shlex.quote(user or "Anonymous"), "action": "PUT", "file": shlex.quote(absolute_file_path or ""), "context": str(context) or ""}
                 logger.debug("Running hook")
                 p = subprocess.Popen(command, **popen_kwargs)
                 try:

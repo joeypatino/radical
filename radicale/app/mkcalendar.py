@@ -51,7 +51,7 @@ class ApplicationMkcalendarMixin:
         except ValueError as e:
             logger.warning(
                 "Bad MKCALENDAR request on %r: %s", path, e, exc_info=True)
-        with self._storage.acquire_lock("w", "MKCALENDAR", user, path, context):
+        with self._storage.acquire_lock("w", user, path, context):
             item = next(self._storage.discover(path), None)
             if item:
                 return self._webdav_error_response(
